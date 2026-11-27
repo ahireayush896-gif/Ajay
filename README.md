@@ -27,3 +27,11 @@ Because this is a pure static web application (HTML5, CSS3, Vanilla JS), no buil
      python3 -m http.server 8000
      ```
      Then open `http://localhost:8000` in your browser.
+# Analytics & Telemetry Collector
+Streaming ingestion pipeline aggregating clickstream metrics, trace spans, and SLA latency histograms.
+
+## Runtime Settings
+- Service Port: 9095
+- Storage Backend: clickhouse://telemetry.internal:8123
+- Batch Window: 10s
+- Health Probe: /healthz/telemetry
