@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sophisticated Todo Application</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-background">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-title">
+                <h1><i class="fa-solid fa-list-check"></i> TaskFlow</h1>
+                <p>Sophisticated Priority & Category Management</p>
+            </div>
+            <div class="header-actions">
+                <button id="theme-toggle" class="icon-btn" title="Toggle Theme" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats Bar -->
+        <section class="stats-bar" aria-label="Task Statistics">
+            <div class="stat-card">
+                <span class="stat-number" id="stat-total">0</span>
+                <span class="stat-label">Total Tasks</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="stat-active">0</span>
+                <span class="stat-label">Active</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="stat-completed">0</span>
+                <span class="stat-label">Completed</span>
+            </div>
+        </section>
+
+        <!-- Task Creation Form -->
+        <section class="task-form-section">
+            <form id="task-form" class="glass-card">
+                <div class="form-group title-group">
+                    <input 
+                        type="text" 
+                        id="task-title" 
+                        placeholder="What needs to be done?" 
+                        required 
+                        autocomplete="off"
+                    >
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="task-priority"><i class="fa-solid fa-flag"></i> Priority</label>
+                        <select id="task-priority">
+                            <option value="P0">P0 - Urgent</option>
+                            <option value="P1" selected>P1 - Medium</option>
+                            <option value="P2">P2 - Low</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="task-category"><i class="fa-solid fa-folder"></i> Category</label>
+                        <select id="task-category">
+                            <option value="Work" selected>Work</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Errands">Errands</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="task-due-date"><i class="fa-solid fa-calendar"></i> Due Date</label>
+                        <input type="date" id="task-due-date">
+                    </div>
+
+                    <div class="form-group submit-group">
+                        <button type="submit" class="btn-primary">
+                            <i class="fa-solid fa-plus"></i> Add Task
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <!-- Controls & Filters Bar -->
+        <section class="controls-bar">
+            <div class="filter-tabs" role="tablist">
+                <button class="filter-tab active" data-filter="all" role="tab">All</button>
+                <button class="filter-tab" data-filter="active" role="tab">Active</button>
+                <button class="filter-tab" data-filter="completed" role="tab">Completed</button>
+            </div>
+
+            <div class="secondary-filters">
+                <div class="dropdown-filter">
+                    <select id="filter-category" aria-label="Filter by Category">
+                        <option value="all">All Categories</option>
+                        <option value="Work">Work</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Errands">Errands</option>
+                    </select>
+                </div>
+                <div class="dropdown-filter">
+                    <select id="filter-priority" aria-label="Filter by Priority">
+                        <option value="all">All Priorities</option>
+                        <option value="P0">P0</option>
+                        <option value="P1">P1</option>
+                        <option value="P2">P2</option>
+                    </select>
+                </div>
+                <button id="clear-completed-btn" class="btn-secondary" title="Clear Completed Tasks">
+                    <i class="fa-solid fa-trash-can"></i> Clear Done
+                </button>
+            </div>
+        </section>
+
+        <!-- Task List Container -->
+        <main class="task-list-container">
+            <div id="task-list" class="task-list" aria-live="polite">
+                <!-- Dynamic tasks rendered here -->
+            </div>
+            
+            <div id="empty-state" class="empty-state hidden">
+                <i class="fa-solid fa-clipboard-check"></i>
+                <h3>No tasks found</h3>
+                <p>Create a task above to get started on your day!</p>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>&copy; TaskFlow Application. Built with pure HTML5, CSS3, & Vanilla JavaScript.</p>
+        </footer>
+    </div>
+
+    <!-- Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>
